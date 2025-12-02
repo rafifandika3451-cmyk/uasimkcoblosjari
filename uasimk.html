@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>UAS IMK</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+/* === COLOR THEME === */
+:root {
+    --primary:#0024f0;
+    --primary2:#27a4fff0;
+    --dark:#1e1e1e;
+    --gray:#6f6f6f;
+    --bg:#b7b6b6;
+    --white:#747474;
+}
+
+/* === BASE === */
+body {
+    margin:0;
+    font-family: 'Poppins', Arial, sans-serif;
+    background:url("C:/Users/RAMA/Documents/UAS IMK/Gambar/backround.jpg") no-repeat center center fixed;
+    background-size:cover;
+    color:var(--dark);
+    line-height:1.6;
+    overflow-x:hidden;
+}
+
+/* === SPLASH SCREEN (ANIMASI START) === */
+#splash {
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:linear-gradient(120deg, var(--primary), var(--primary2));
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    animation:fadeSplash 1.7s forwards;
+}
+
+#splash h1{
+    color:white;
+    font-size:48px;
+    letter-spacing:2px;
+    animation:zoomIn 1.3s ease;
+}
+
+@keyframes zoomIn {
+    0% {opacity:0; transform:scale(0.4);}
+    100% {opacity:1; transform:scale(1);}
+}
+
+@keyframes fadeSplash {
+    0% {opacity:1;}
+    75%{opacity:1;}
+    100% {opacity:0; visibility:hidden;}
+}
+
+/* === HEADER === */
+header{
+    width:100%;
+    background:linear-gradient(120deg, var(--primary), var(--primary2));
+    padding:25px 0;
+    box-shadow:0 5px 20px rgba(0,0,0,0.15);
+    border-bottom-left-radius:20px;
+    border-bottom-right-radius:20px;
+    animation:slideDown 0.9s ease;
+}
+
+@keyframes slideDown {
+    from {transform:translateY(-80px); opacity:0;}
+    to {transform:translateY(0); opacity:1;}
+}
+
+.header-container{
+    max-width:1200px;
+    margin:auto;
+    padding:0 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+header h1{
+    margin:0;
+    color:white;
+    font-weight:700;
+    font-size:30px;
+    letter-spacing:1px;
+    text-shadow:0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* === NAV MENU === */
+nav{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+nav button{
+    padding:10px 20px;
+    border:none;
+    background:rgba(255,255,255,0.85);
+    border-radius:10px;
+    cursor:pointer;
+    font-size:14px;
+    font-weight:600;
+    transition:0.3s;
+    backdrop-filter:blur(5px);
+    box-shadow:0 3px 8px rgba(0,0,0,0.15);
+}
+
+nav button:hover{
+    background:var(--dark);
+    color:white;
+    transform:translateY(-3px);
+    box-shadow:0 6px 15px rgba(0,0,0,0.2);
+}
+
+nav button.active{
+    background:var(--dark);
+    color:white;
+}
+
+/* === CONTENT === */
+#contentArea{
+    max-width:1100px;
+    margin:40px auto;
+    padding:0 20px;
+}
+
+/* === CARD === */
+.card{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    margin-bottom:30px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    animation:fadeIn 0.5s ease;
+    border:1px solid #e5e9f2;
+}
+
+@keyframes fadeIn {
+    from {opacity:0; transform:translateY(15px);}
+    to {opacity:1; transform:translateY(0);}
+}
+
+h2{
+    margin-top:0;
+    font-size:26px;
+    font-weight:700;
+    text-align:center;
+}
+
+/* HOME WELCOME TEXT */
+.welcome{
+    font-size:22px;
+    text-align:center;
+    padding:10px 20px;
+    font-weight:500;
+    color:var(--gray);
+    animation:fadePop 1.2s ease;
+}
+
+@keyframes fadePop {
+    0%{opacity:0; transform:scale(0.7);}
+    100%{opacity:1; transform:scale(1);}
+}
+
+/* === ABOUT US === */
+.about-wrapper{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:40px;
+    flex-wrap:wrap;
+    margin-top:20px;
+    padding:15px;
+}
+
+.pdf-view{
+    width:100%;
+    height:500px;
+    border:none;
+}
+
+.about-wrapper img{
+    width:170px;
+    height:170px;
+    object-fit:cover;
+    border-radius:16px;
+    border:3px solid var(--primary);
+    box-shadow:0 5px 20px rgba(0,0,0,0.18);
+}
+
+/* RESPONSIVE */
+@media (max-width:760px){
+    nav{justify-content:center;}
+    header h1 {font-size:22px;}
+    .about-wrapper{
+        flex-direction:column;
+        text-align:center;
+    }
+}
+
+</style>
+
+</head>
+<body>
+
+<!-- SPLASH SCREEN -->
+<div id="splash">
+    <h1>Welcome</h1>
+</div>
+
+<header>
+    <div class="header-container">
+        <h1>UAS IMK</h1>
+
+        <nav>
+            <button onclick="show('home')" class="active">Home</button>
+            <button onclick="show('problem')">Problem Identification</button>
+            <button onclick="show('research')">User Research</button>
+            <button onclick="show('requirements')">User Requirements</button>
+            <button onclick="show('desain')">Desain</button>
+            <button onclick="show('evaluation')">Evaluation</button>
+            <button onclick="show('about')">About Us</button>
+        </nav>
+    </div>
+</header>
+
+<div id="contentArea">
+
+    <!-- HOME -->
+    <section id="home" class="card">
+        <h2>Home</h2>
+        <p class="welcome">Selamat datang di Website UAS IMK.  
+        Silakan gunakan menu di atas untuk melihat seluruh hasil kerja kami.</p>
+    </section>
+
+    <!-- === Other sections TETAP SAMA PERSIS dengan data kamu === -->
+    <!-- AKU TIDAK MENGUBAH PDF/GAMBAR/LINK IG -->
+
+    <!-- PROBLEM IDENTIFICATION -->
+    <section id="problem" class="card" style="display:none;">
+        <h2>Problem Identification</h2>
+        <p>
+            Permasalahan yang terjadi adalah sebagian peserta kebingungan menentukan lokasi 
+            dan nomor TPS tempat mencoblos. Selain itu, ada peserta yang mencoba mencoblos 
+            lebih dari satu kali sehingga integritas pemilihan menurun.
+        </p>
+    </section>
+
+    <!-- USER RESEARCH -->
+    <section id="research" class="card" style="display:none;">
+        <h2>User Research</h2>
+
+        <h3>Rencana Survey & Observasi</h3>
+        <embed src="C:\Users\RAMA\Documents\UAS IMK\PDF\rencana survey.PDF" type="application/pdf" class="pdf-view">
+    
+        <hr>
+
+        <h3>Hasil Survey & Observasi</h3>
+        <embed src="C:\Users\RAMA\Documents\UAS IMK\PDF\Hasil Observasi dan Survei.PDF" type="application/pdf" class="pdf-view">
+      
+        <h3>Persona</h3>
+        <embed src="C:\Users\RAMA\Documents\UAS IMK\PDF\Persona.PDF" type="application/pdf" class="pdf-view">
+  
+        <hr>
+
+        <h3>User Journey Map</h3>
+        <embed src="C:\Users\RAMA\Documents\UAS IMK\PDF\User Journey Map IMK.PDF" type="application/pdf" class="pdf-view">
+            
+    </section>
+
+    <!-- Requirements -->
+    <section id="requirements" class="card" style="display:none;">
+        <h2>User Requirements</h2>
+        <embed src="C:\Users\RAMA\Documents\UAS IMK\PDF\user requitremnt.pdf" type="application/pdf" class="pdf-view">
+    </section>
+
+    <!-- DESAIN -->
+    <section id="desain" class="card" style="display:none;">
+        <h2>DESIGN</h2>
+
+        <h3>Sketsa</h3>
+        <embed src="C:\Users\RAMA\Documents\UAS IMK\PDF\sketsa.PDF" type="application/pdf" class="pdf-view">
+
+        <hr>
+
+        <h3>Wireframe</h3>
+        <embed src="C:\Users\RAMA\Documents\UAS IMK\PDF\wireframe.PDF" type="application/pdf" class="pdf-view">
+
+        <h3>Prototype</h3>
+        <embed src="C:\Users\RAMA\Documents\UAS IMK\PDF\TUGAS Prototype.PDF" type="application/pdf" class="pdf-view">
+    </section>
+
+    <!-- EVALUATION -->
+    <section id="evaluation" class="card" style="display:none;">
+        <h2>EVALUATION</h2>
+
+        <h3>Heuristic Evaluation</h3>
+        <embed src="C:\Users\RAMA\Documents\UAS IMK\PDF\Heuristic Evaluation.PDF" type="application/pdf" class="pdf-view">
+
+        <hr>
+
+        <h3>WEBuse Tool Evaluation</h3>
+        <embed src="C:\Users\RAMA\Documents\UAS IMK\PDF\webuse tool evaluation.PDF" type="application/pdf" class="pdf-view">
+    </section>
+
+    <!-- ABOUT US -->
+    <section id="about" class="card" style="display:none;">
+        <h2>ABOUT US</h2>
+        <hr>
+
+        <div class="about-wrapper">
+            <img src="C:\Users\RAMA\Documents\UAS IMK\Gambar\jesen.jpg" class="pdf-view">
+            <table>
+                <tr><td>Nama</td><td>: Aryo</td></tr>
+                <tr><td>NPM</td><td>: 23421016</td></tr>
+                <tr><td>Email</td><td>: jesenlobya12@gmail.com</td></tr>
+            </table>
+        </div>
+
+        <footer style="text-align:center;margin-top:10px;">
+            <a href="https://www.instagram.com/__jelo06" target="_blank">
+                <img src="C:\Users\RAMA\Documents\UAS IMK\Gambar\instagram.png" width="25"> @__Jelo06
+            </a>
+        </footer>
+
+        <hr>
+
+        <div class="about-wrapper">
+            <img src="C:\Users\RAMA\Documents\UAS IMK\Gambar\rafif.jpg">
+            <table>
+                <tr><td>Nama</td><td>: Rafif Dwi Nur Andika</td></tr>
+                <tr><td>NPM</td><td>: 23421008</td></tr>
+                <tr><td>Email</td><td>: rafifandika3451@gmail.com</td></tr>
+            </table>
+        </div>
+
+        <footer style="text-align:center;margin-top:10px;">
+            <a href="https://www.instagram.com/apiipss_?igsh=bmdqandidDNucDNi" target="_blank">
+                <img src="C:\Users\RAMA\Documents\UAS IMK\Gambar\instagram.png" width="25"> @apiipss_
+            </a>
+        </footer>
+
+        <hr>
+
+        <div class="about-wrapper">
+            <img src="C:\Users\RAMA\Documents\UAS IMK\Gambar\fajar.jpg">
+            <table>
+                <tr><td>Nama</td><td>: Muhammad Fajar</td></tr>
+                <tr><td>NPM</td><td>: 23421010</td></tr>
+                <tr><td>Email</td><td>: muhfajar1909@gmail.com</td></tr>
+            </table>
+        </div>
+
+        <footer style="text-align:center;margin-top:10px;">
+            <a href="https://www.instagram.com/fajrrttt?igsh=MnluanB1bDNqZWVp" target="_blank">
+                <img src="C:\Users\RAMA\Documents\UAS IMK\Gambar\instagram.png" width="25"> @fajrrttt
+            </a>
+        </footer>
+    </section>
+
+</div>
+
+
+<script>
+function show(id){
+    document.querySelectorAll('#contentArea section').forEach(sec=>{
+        sec.style.display="none";
+    });
+
+    document.getElementById(id).style.display="block";
+
+    document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
+    event.target.classList.add("active");
+
+    window.scrollTo({top:0,behavior:"smooth"});
+}
+</script>
+
+</body>
+</html>
